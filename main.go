@@ -1,6 +1,4 @@
 // Enhanced TCP Port Scanner
-// Author: [Your Name]
-// Date: [Current Date]
 // Description: Concurrent port scanner with CLI flags, progress reporting, and JSON output
 
 package main
