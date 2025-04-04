@@ -35,6 +35,9 @@ Run the following command to execute the port scanner directly without building 
 2. Run the executable with your desired flags by typing:  
 `./portscanner -target scanme.nmap.org -start-port 1 -end-port 1024 -workers 100 -timeout 5 -banner -json`
 
+3. Run the executable with your port numbers by typing:
+`go run main.go -target scanme.nmap.org -ports 22,80,443 -workers 100 -timeout 5 -banner -json`
+
 ### Command-Line Flags Description
 - `-target`: Single target hostname or IP (default: "scanme.nmap.org")
 - `-targets`: Comma-separated list of targets
@@ -48,4 +51,7 @@ Run the following command to execute the port scanner directly without building 
 
 ## Author
 Jevon Teul
+
+## Demo Video
+https://youtu.be/8_UayBsIAfg
 

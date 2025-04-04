@@ -18,7 +18,7 @@ import (
 // ScanResult stores individual port scan results
 type ScanResult struct {
 	Port   int    `json:"port"`
-	State  string `json:"state"` // "open" or "closed"
+	State  string `json:"state"`
 	Banner string `json:"banner,omitempty"`
 }
 
@@ -32,7 +32,6 @@ type ScanSummary struct {
 }
 
 func main() {
-	/* PART A: BASE ENHANCEMENTS (60 points) */
 
 	// Custom Target Flag (-target)
 	target := flag.String("target", "scanme.nmap.org", "Target hostname or IP to scan")
@@ -46,8 +45,6 @@ func main() {
 
 	// Timeout Flag (-timeout)
 	timeoutSec := flag.Int("timeout", 5, "Connection timeout in seconds")
-
-	/* PART B: ENRICHMENT FEATURES (40 points) */
 
 	// Banner Grabbing (-banner)
 	banner := flag.Bool("banner", false, "Attempt to grab service banners")
@@ -75,7 +72,6 @@ func main() {
 	// Process ports
 	portsToScan := parsePorts(*portsList, *startPort, *endPort)
 
-	// Scan each target
 	for _, host := range scanTargets {
 		results := scanHost(host, portsToScan, *workers, time.Duration(*timeoutSec)*time.Second, *banner)
 		generateOutput(results, *jsonOut)
@@ -83,7 +79,6 @@ func main() {
 }
 
 /* Core Scanning Functions */
-
 func scanHost(host string, ports []int, workers int, timeout time.Duration, grabBanner bool) ScanSummary {
 	start := time.Now()
 	tasks := make(chan int, workers)
@@ -173,7 +168,6 @@ func scanPort(host string, port int, timeout time.Duration, grabBanner bool) Sca
 }
 
 /* Helper Functions */
-
 func parseTargets(defaultTarget, targetList string) []string {
 	if targetList == "" {
 		return []string{defaultTarget}
